@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login Page</title>
+  </head>
+  <body>
+    <h1>Login Form Example with Explanation</h1>
+
+    <!-- Explanation of heading -->
+    <p>
+      <strong>&lt;h2&gt;Login&lt;/h2&gt;</strong>: This is a heading tag. It
+      displays a title for the form.
+    </p>
+    <h2>Login</h2>
+
+    <!-- Explanation of form tag -->
+    <p>
+      <strong>&lt;form action="/login" method="POST"&gt;</strong>: This tag
+      creates a form. The data will be sent to "/login" using the POST method
+      when submitted.
+    </p>
+
+    <form action="/login" method="POST">
+      <!-- Username input explanation -->
+      <p>
+        <strong>&lt;label for="username"&gt;Username:&lt;/label&gt;</strong>:
+        This label is linked to the username input field using the 'for'
+        attribute.
+      </p>
+      <p>
+        <strong
+          >&lt;input type="text" id="username" name="username"
+          required&gt;</strong
+        >: This creates a text input. It is required to be filled in before
+        submitting.
+      </p>
+      <label for="username">Username:</label><br />
+      <input type="text" id="username" name="username" required /><br /><br />
+
+      <!-- Password input explanation -->
+      <p>
+        <strong>&lt;label for="password"&gt;Password:&lt;/label&gt;</strong>:
+        This label is linked to the password input field.
+      </p>
+      <p>
+        <strong
+          >&lt;input type="password" id="password" name="password"
+          required&gt;</strong
+        >: This creates a password input. The characters are hidden as you type.
+        It is also required.
+      </p>
+      <label for="password">Password:</label><br />
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required /><br /><br />
+
+      <!-- Submit button explanation -->
+      <p>
+        <strong>&lt;input type="submit" value="Login"&gt;</strong>: This is a
+        submit button that sends the form data to the server when clicked.
+      </p>
+      <input type="submit" value="Login" />
+    </form>
+    <!-- Username input explanation -->
+    <!-- Explanation of styled username and password inputs -->
+    <p>
+      <strong
+        >Styled Username and Password Inputs with Icons Inside the Text
+        Boxes</strong
+      >
+    </p>
+    <!-- CSS Styling -->
+    <style>
+      .input-icon {
+        position: relative;
+        width: 250px;
+        margin-bottom: 20px;
+      }
+      .input-icon input {
+        width: 100%;
+        padding: 10px 10px 10px 35px; /* space on the left for the icon */
+        box-sizing: border-box;
+      }
+      .input-icon i {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: gray;
+        font-style: normal; /* makes emoji behave properly */
+      }
+    </style>
+
+    <!-- Username Field -->
+    <div class="input-icon">
+      <i>👤</i>
+      <!-- You can replace this with a FontAwesome or SVG icon -->
+      <input
+        type="text"
+        id="username"
+        name="username"
+        placeholder="Username"
+        required />
+    </div>
+    <!-- Password Field -->
+    <div class="input-icon">
+      <i>🔒</i>
+      <!-- Lock icon; can also be replaced with real icons -->
+      <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Password"
+        required />
+    </div>
+  </body>
+</html>

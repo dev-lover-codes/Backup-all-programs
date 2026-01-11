@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MyAIClone" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/ai_primary</item>
+        <item name="colorSecondary">@color/ai_secondary</item>
+        <item name="colorTertiary">@color/ai_tertiary</item>
+        <item name="android:statusBarColor">@color/background_light</item>
+    </style>
+
+    <style name="Theme.MyAIClone" parent="Base.Theme.MyAIClone" />
+</resources>

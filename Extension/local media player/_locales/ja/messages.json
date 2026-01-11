@@ -1,0 +1,176 @@
+{
+    "extName": {
+        "message": "Local Media Player Pro"
+    },
+    "extDescription": {
+        "message": "高度な機能を備えた高性能ローカルビデオプレーヤー"
+    },
+    "welcomeTitle": {
+        "message": "Local Media Player Pro"
+    },
+    "welcomeSubtitle": {
+        "message": "高度な機能を備えた高性能ビデオプレーヤー"
+    },
+    "openVideoFile": {
+        "message": "ビデオファイルを開く"
+    },
+    "openPlaylist": {
+        "message": "プレイリストを開く"
+    },
+    "noVideoLoaded": {
+        "message": "ビデオが読み込まれていません"
+    },
+    "statistics": {
+        "message": "統計情報"
+    },
+    "settings": {
+        "message": "設定"
+    },
+    "close": {
+        "message": "閉じる"
+    },
+    "playlist": {
+        "message": "プレイリスト"
+    },
+    "addVideos": {
+        "message": "ビデオを追加"
+    },
+    "clearPlaylist": {
+        "message": "リストをクリア"
+    },
+    "videoControls": {
+        "message": "ビデオコントロール"
+    },
+    "brightness": {
+        "message": "明るさ"
+    },
+    "contrast": {
+        "message": "コントラスト"
+    },
+    "saturation": {
+        "message": "彩度"
+    },
+    "audioBoost": {
+        "message": "オーディオブースト"
+    },
+    "subtitleSettings": {
+        "message": "字幕設定"
+    },
+    "loadSubtitleFile": {
+        "message": "字幕ファイルを読み込む"
+    },
+    "chooseFile": {
+        "message": "ファイルを選択"
+    },
+    "subtitleSync": {
+        "message": "字幕同期"
+    },
+    "fontSize": {
+        "message": "フォントサイズ"
+    },
+    "fontFamily": {
+        "message": "フォントファミリー"
+    },
+    "textColor": {
+        "message": "テキストカラー"
+    },
+    "backgroundColor": {
+        "message": "背景色"
+    },
+    "backgroundOpacity": {
+        "message": "背景の不透明度"
+    },
+    "verticalPosition": {
+        "message": "垂直位置"
+    },
+    "textShadow": {
+        "message": "テキストシャドウ"
+    },
+    "textOutline": {
+        "message": "テキストアウトライン"
+    },
+    "playbackSettings": {
+        "message": "再生設定"
+    },
+    "skipInterval": {
+        "message": "スキップ間隔（秒）"
+    },
+    "autoplayNext": {
+        "message": "リストの次を自動再生"
+    },
+    "resumePlayback": {
+        "message": "最後の位置から再生を再開"
+    },
+    "rememberSubtitles": {
+        "message": "ビデオごとに字幕設定を記憶"
+    },
+    "languageSettings": {
+        "message": "言語設定"
+    },
+    "selectLanguage": {
+        "message": "言語を選択"
+    },
+    "english": {
+        "message": "英語"
+    },
+    "spanish": {
+        "message": "スペイン語"
+    },
+    "hindi": {
+        "message": "ヒンディー語"
+    },
+    "french": {
+        "message": "フランス語"
+    },
+    "german": {
+        "message": "ドイツ語"
+    },
+    "chinese": {
+        "message": "中国語"
+    },
+    "japanese": {
+        "message": "日本語"
+    },
+    "keyboardShortcuts": {
+        "message": "キーボードショートカット"
+    },
+    "shortcutsInfo": {
+        "message": "ショートカットは設定で構成可能です"
+    },
+    "resetToDefaults": {
+        "message": "デフォルトにリセット"
+    },
+    "resolution": {
+        "message": "解像度"
+    },
+    "fps": {
+        "message": "FPS"
+    },
+    "bitrate": {
+        "message": "ビットレート"
+    },
+    "codec": {
+        "message": "コーデック"
+    },
+    "fileSize": {
+        "message": "ファイルサイズ"
+    },
+    "duration": {
+        "message": "再生時間"
+    },
+    "playbackSpeed": {
+        "message": "再生速度"
+    },
+    "volume": {
+        "message": "音量"
+    },
+    "customSpeed": {
+        "message": "カスタム速度"
+    },
+    "apply": {
+        "message": "適用"
+    },
+    "readyToPlay": {
+        "message": "再生準備完了"
+    }
+}

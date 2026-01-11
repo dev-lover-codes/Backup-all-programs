@@ -1,0 +1,176 @@
+{
+    "extName": {
+        "message": "Local Media Player Pro"
+    },
+    "extDescription": {
+        "message": "High-performance local video player with advanced features"
+    },
+    "welcomeTitle": {
+        "message": "Local Media Player Pro"
+    },
+    "welcomeSubtitle": {
+        "message": "High-performance video player with advanced features"
+    },
+    "openVideoFile": {
+        "message": "Open Video File"
+    },
+    "openPlaylist": {
+        "message": "Open Playlist"
+    },
+    "noVideoLoaded": {
+        "message": "No video loaded"
+    },
+    "statistics": {
+        "message": "Statistics"
+    },
+    "settings": {
+        "message": "Settings"
+    },
+    "close": {
+        "message": "Close"
+    },
+    "playlist": {
+        "message": "Playlist"
+    },
+    "addVideos": {
+        "message": "Add Videos"
+    },
+    "clearPlaylist": {
+        "message": "Clear Playlist"
+    },
+    "videoControls": {
+        "message": "Video Controls"
+    },
+    "brightness": {
+        "message": "Brightness"
+    },
+    "contrast": {
+        "message": "Contrast"
+    },
+    "saturation": {
+        "message": "Saturation"
+    },
+    "audioBoost": {
+        "message": "Audio Boost"
+    },
+    "subtitleSettings": {
+        "message": "Subtitle Settings"
+    },
+    "loadSubtitleFile": {
+        "message": "Load Subtitle File"
+    },
+    "chooseFile": {
+        "message": "Choose File"
+    },
+    "subtitleSync": {
+        "message": "Subtitle Sync"
+    },
+    "fontSize": {
+        "message": "Font Size"
+    },
+    "fontFamily": {
+        "message": "Font Family"
+    },
+    "textColor": {
+        "message": "Text Color"
+    },
+    "backgroundColor": {
+        "message": "Background Color"
+    },
+    "backgroundOpacity": {
+        "message": "Background Opacity"
+    },
+    "verticalPosition": {
+        "message": "Vertical Position"
+    },
+    "textShadow": {
+        "message": "Text Shadow"
+    },
+    "textOutline": {
+        "message": "Text Outline"
+    },
+    "playbackSettings": {
+        "message": "Playback Settings"
+    },
+    "skipInterval": {
+        "message": "Skip Interval (seconds)"
+    },
+    "autoplayNext": {
+        "message": "Autoplay next in playlist"
+    },
+    "resumePlayback": {
+        "message": "Resume playback from last position"
+    },
+    "rememberSubtitles": {
+        "message": "Remember subtitle settings per video"
+    },
+    "languageSettings": {
+        "message": "Language Settings"
+    },
+    "selectLanguage": {
+        "message": "Select Language"
+    },
+    "english": {
+        "message": "English"
+    },
+    "spanish": {
+        "message": "Spanish"
+    },
+    "hindi": {
+        "message": "Hindi"
+    },
+    "french": {
+        "message": "French"
+    },
+    "german": {
+        "message": "German"
+    },
+    "chinese": {
+        "message": "Chinese"
+    },
+    "japanese": {
+        "message": "Japanese"
+    },
+    "keyboardShortcuts": {
+        "message": "Keyboard Shortcuts"
+    },
+    "shortcutsInfo": {
+        "message": "Shortcuts are configurable in settings"
+    },
+    "resetToDefaults": {
+        "message": "Reset to Defaults"
+    },
+    "resolution": {
+        "message": "Resolution"
+    },
+    "fps": {
+        "message": "FPS"
+    },
+    "bitrate": {
+        "message": "Bitrate"
+    },
+    "codec": {
+        "message": "Codec"
+    },
+    "fileSize": {
+        "message": "File Size"
+    },
+    "duration": {
+        "message": "Duration"
+    },
+    "playbackSpeed": {
+        "message": "Playback Speed"
+    },
+    "volume": {
+        "message": "Volume"
+    },
+    "customSpeed": {
+        "message": "Custom Speed"
+    },
+    "apply": {
+        "message": "Apply"
+    },
+    "readyToPlay": {
+        "message": "Ready to play"
+    }
+}

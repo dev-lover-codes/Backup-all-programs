@@ -1,0 +1,176 @@
+{
+    "extName": {
+        "message": "Local Media Player Pro"
+    },
+    "extDescription": {
+        "message": "Hochleistungs-lokaler Videoplayer mit erweiterten Funktionen"
+    },
+    "welcomeTitle": {
+        "message": "Local Media Player Pro"
+    },
+    "welcomeSubtitle": {
+        "message": "Hochleistungs-Videoplayer mit erweiterten Funktionen"
+    },
+    "openVideoFile": {
+        "message": "Videodatei Öffnen"
+    },
+    "openPlaylist": {
+        "message": "Wiedergabeliste Öffnen"
+    },
+    "noVideoLoaded": {
+        "message": "Kein Video geladen"
+    },
+    "statistics": {
+        "message": "Statistiken"
+    },
+    "settings": {
+        "message": "Einstellungen"
+    },
+    "close": {
+        "message": "Schließen"
+    },
+    "playlist": {
+        "message": "Wiedergabeliste"
+    },
+    "addVideos": {
+        "message": "Videos Hinzufügen"
+    },
+    "clearPlaylist": {
+        "message": "Liste Löschen"
+    },
+    "videoControls": {
+        "message": "Video-Steuerung"
+    },
+    "brightness": {
+        "message": "Helligkeit"
+    },
+    "contrast": {
+        "message": "Kontrast"
+    },
+    "saturation": {
+        "message": "Sättigung"
+    },
+    "audioBoost": {
+        "message": "Audio-Verstärkung"
+    },
+    "subtitleSettings": {
+        "message": "Untertitel-Einstellungen"
+    },
+    "loadSubtitleFile": {
+        "message": "Untertiteldatei Laden"
+    },
+    "chooseFile": {
+        "message": "Datei Wählen"
+    },
+    "subtitleSync": {
+        "message": "Untertitel-Synchronisation"
+    },
+    "fontSize": {
+        "message": "Schriftgröße"
+    },
+    "fontFamily": {
+        "message": "Schriftfamilie"
+    },
+    "textColor": {
+        "message": "Textfarbe"
+    },
+    "backgroundColor": {
+        "message": "Hintergrundfarbe"
+    },
+    "backgroundOpacity": {
+        "message": "Hintergrund-Deckkraft"
+    },
+    "verticalPosition": {
+        "message": "Vertikale Position"
+    },
+    "textShadow": {
+        "message": "Textschatten"
+    },
+    "textOutline": {
+        "message": "Textumriss"
+    },
+    "playbackSettings": {
+        "message": "Wiedergabe-Einstellungen"
+    },
+    "skipInterval": {
+        "message": "Sprungintervall (Sekunden)"
+    },
+    "autoplayNext": {
+        "message": "Nächstes in Liste automatisch abspielen"
+    },
+    "resumePlayback": {
+        "message": "Wiedergabe von letzter Position fortsetzen"
+    },
+    "rememberSubtitles": {
+        "message": "Untertitel-Einstellungen pro Video merken"
+    },
+    "languageSettings": {
+        "message": "Spracheinstellungen"
+    },
+    "selectLanguage": {
+        "message": "Sprache Auswählen"
+    },
+    "english": {
+        "message": "Englisch"
+    },
+    "spanish": {
+        "message": "Spanisch"
+    },
+    "hindi": {
+        "message": "Hindi"
+    },
+    "french": {
+        "message": "Französisch"
+    },
+    "german": {
+        "message": "Deutsch"
+    },
+    "chinese": {
+        "message": "Chinesisch"
+    },
+    "japanese": {
+        "message": "Japanisch"
+    },
+    "keyboardShortcuts": {
+        "message": "Tastaturkürzel"
+    },
+    "shortcutsInfo": {
+        "message": "Verknüpfungen sind in den Einstellungen konfigurierbar"
+    },
+    "resetToDefaults": {
+        "message": "Auf Standardwerte Zurücksetzen"
+    },
+    "resolution": {
+        "message": "Auflösung"
+    },
+    "fps": {
+        "message": "FPS"
+    },
+    "bitrate": {
+        "message": "Bitrate"
+    },
+    "codec": {
+        "message": "Codec"
+    },
+    "fileSize": {
+        "message": "Dateigröße"
+    },
+    "duration": {
+        "message": "Dauer"
+    },
+    "playbackSpeed": {
+        "message": "Wiedergabegeschwindigkeit"
+    },
+    "volume": {
+        "message": "Lautstärke"
+    },
+    "customSpeed": {
+        "message": "Benutzerdefinierte Geschwindigkeit"
+    },
+    "apply": {
+        "message": "Anwenden"
+    },
+    "readyToPlay": {
+        "message": "Bereit zum Abspielen"
+    }
+}

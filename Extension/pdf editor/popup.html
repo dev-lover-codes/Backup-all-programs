@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Pro Editor</title>
+    <link rel="stylesheet" href="styles/popup.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect width="32" height="32" rx="6" fill="url(#gradient)"/>
+                    <path d="M10 8H22V24H10V8Z" stroke="white" stroke-width="2" fill="none"/>
+                    <path d="M13 12H19M13 16H19M13 20H16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="gradient" x1="0" y1="0" x2="32" y2="32">
+                            <stop offset="0%" stop-color="#6366f1"/>
+                            <stop offset="100%" stop-color="#8b5cf6"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <h1>PDF Pro Editor</h1>
+            </div>
+            <p class="subtitle">Professional PDF Editing Made Easy</p>
+        </div>
+
+        <div class="content">
+            <div class="upload-section">
+                <input type="file" id="fileInput" accept=".pdf" hidden>
+                <button class="upload-btn" id="uploadBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                    </svg>
+                    <span>Open PDF File</span>
+                </button>
+                <p class="hint">Or drag and drop your PDF here</p>
+            </div>
+
+            <div class="features">
+                <div class="feature-item">
+                    <div class="feature-icon">✏️</div>
+                    <div class="feature-text">
+                        <h3>Edit Text</h3>
+                        <p>Modify text while preserving formatting</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🖼️</div>
+                    <div class="feature-text">
+                        <h3>Manage Images</h3>
+                        <p>Replace, resize, and insert images</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✨</div>
+                    <div class="feature-text">
+                        <h3>Annotations</h3>
+                        <p>Highlight, draw, and add notes</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📄</div>
+                    <div class="feature-text">
+                        <h3>Page Tools</h3>
+                        <p>Split, merge, and reorder pages</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recent-section" id="recentSection" style="display: none;">
+                <h3>Recent Files</h3>
+                <div id="recentFiles" class="recent-files"></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🔒 All editing is done locally on your device</p>
+        </div>
+    </div>
+
+    <script src="scripts/popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+/* ChatGPT Export Pro - Content Styles */
+/* Premium floating button and notifications */
+
+#chatgpt-export-button {
+  position: fixed !important;
+  bottom: 30px !important;
+  right: 30px !important;
+  z-index: 999999 !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.export-btn-main {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 12px 20px !important;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+  border-radius: 50px !important;
+  cursor: pointer !important;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  user-select: none !important;
+  border: none !important;
+  min-width: 120px !important;
+}
+
+.export-btn-main:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5) !important;
+}
+
+.export-btn-main:active {
+  transform: translateY(0);
+}
+
+.export-btn-main svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Export Menu */
+.export-menu {
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  padding: 8px;
+  min-width: 180px;
+  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.export-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #1f2937;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.export-menu-item:hover {
+  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+  color: #667eea;
+}
+
+.export-menu-item svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .export-menu {
+    background: #1f2937;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .export-menu-item {
+    color: #e5e7eb;
+  }
+
+  .export-menu-item:hover {
+    background: linear-gradient(135deg, #667eea25 0%, #764ba225 100%);
+    color: #a5b4fc;
+  }
+}
+
+/* Notification Styles */
+.chatgpt-export-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 16px 24px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  z-index: 1000000;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateX(100px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  max-width: 400px;
+}
+
+.chatgpt-export-notification.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.chatgpt-export-notification.success {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+}
+
+.chatgpt-export-notification.error {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+}
+
+.chatgpt-export-notification.info {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+}
+
+/* Pulse animation for loading states */
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.export-btn-main.loading {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #chatgpt-export-button {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .export-btn-main {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .export-menu {
+    bottom: 60px;
+  }
+
+  .chatgpt-export-notification {
+    right: 10px;
+    left: 10px;
+    top: 10px;
+    max-width: none;
+  }
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lord Server</title>
+
+    <!--
+    Using <style> Tag (Internal CSS)
+    The <style> tag is used to define CSS rules within the <head> section of the HTML document.
+    This is an internal CSS style that applies to the whole page.
+    The <style> tag contains CSS rules enclosed in curly braces.
+    Example:
+        <head>
+            <style>
+                selector {
+                    property: value;
+                }
+            </style>
+        </head>
+    -->
+
+    <style>
+        h2 {
+            color: blue;
+            font-size: 48px;
+        }
+        p {
+            color: green;
+            font-style: italic;
+        }
+    </style>
+
+    <!-- External CSS file link -->
+    <link rel="stylesheet" href="first-level.css">
+    <!--
+    This is used for integrating external CSS with HTML.
+    rel="stylesheet" specifies the type of file,
+    and href contains the file name (no spaces).
+    For adding JavaScript, include it at the end of the body section:
+    <script src="js/my-javascript-file.js"></script>
+    -->
+
+    <!-- syntex of background colour of any thing selcetor is in which you want ot cahnge 
+    selector {
+    background-color: color;
+    }-->
+        <style>
+        body {
+            background-color: lightblue;
+        }
+        </style>
+        <!--for a spectific element 
+        -->
+         <style>
+        h1 {
+            background-color: yellow;
+        }
+    
+    </style>
+</head>
+
+<body>
+    <h1>This is the h1 line operations </h1>
+    <p>Welcome to Lord Server. This website provides content on new technologies.</p>
+
+    <h1 style="color: red; font-size: 36px;">Inline Style Example</h1>
+
+    <pre style="font-family: 'Times New Roman', Times, serif;">
+This is the inline style syntax:
+Use the &lt;pre&gt; tag to preserve the formatting of your code (line breaks and spaces).
+Use &lt; for &lt;, &gt; for &gt;, and &amp; for &amp; when displaying HTML code to prevent rendering.
+    </pre>
+
+    <pre style="font-family: 'Times New Roman', Times, serif;">
+&lt;tag style="property: value;"&gt;&lt;/tag&gt;
+    </pre>
+
+    <!--
+    Note: Use &lt;, &gt;, and &amp; to display HTML symbols as text.
+    -->
+    <h2>This is a heading styled with internal CSS</h2>
+    <p>This paragraph is also styled with internal CSS.</p>
+    
+    <!-- External CSS (Linked CSS File)
+    This involves creating a separate CSS file and linking it to your HTML document. This is
+    the most efficient and scalable method, especially for large projects. which is h1 here-->
+    <button class="btn-green">Green Button</button>
+</body>
+</html>

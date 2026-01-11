@@ -1,0 +1,13 @@
+h1 {
+    color: rgb(36, 215, 107);
+    text-align: center; /*this line centers the heading*/
+    font-family: "Times New Roman", Times, serif;
+}   /*this line applies the font family to the heading*/
+.btn-green {
+  background-color: green;
+  color: hsl(0, 94%, 45%);
+  border: circular;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}

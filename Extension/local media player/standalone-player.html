@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Media Player Pro - Standalone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        #drop-zone {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        #drop-zone.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #drop-zone.drag-over {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .drop-content {
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .drop-icon {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        p {
+            font-size: 20px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            margin-top: 30px;
+            padding: 15px 40px;
+            font-size: 18px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid #fff;
+            color: #fff;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            pointer-events: all;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        #video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: none;
+        }
+
+        #video-container.active {
+            display: block;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        #controls {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 100;
+        }
+
+        #controls.show {
+            opacity: 1;
+        }
+
+        .timeline {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .timeline-progress {
+            height: 100%;
+            background: #0071e3;
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s;
+        }
+
+        .controls-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        button {
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.1);
+        }
+
+        button svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .time-display {
+            font-size: 14px;
+            color: #fff;
+            min-width: 100px;
+        }
+
+        .spacer {
+            flex: 1;
+        }
+
+        .info {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+            z-index: 99;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .info.show {
+            opacity: 1;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .subtitle-track {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 24px;
+            text-align: center;
+            max-width: 80%;
+            display: none;
+            z-index: 98;
+        }
+
+        .subtitle-track.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="drop-zone">
+        <div class="drop-content">
+            <svg class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            <h1>Local Media Player Pro</h1>
+            <p>Drag & Drop your video file here</p>
+            <p style="font-size: 16px; margin-top: 10px; opacity: 0.7;">Supports large files (14GB+) • Full Fullscreen •
+                All formats</p>
+            <button class="btn" onclick="document.getElementById('file-input').click()">Or Click to Browse</button>
+            <p style="font-size: 14px; margin-top: 20px; opacity: 0.6;">⚠️ For HEVC/H.265 (x265) files: Convert to H.264
+                first<br>Use VLC or HandBrake to convert MKV → MP4 (H.264)</p>
+        </div>
+    </div>
+
+    <div id="video-container">
+        <video id="video" preload="metadata"></video>
+        <div class="subtitle-track" id="subtitle-track"></div>
+        <div class="info" id="info">
+            <div id="info-text">Ready</div>
+        </div>
+        <div id="controls">
+            <div class="timeline" id="timeline">
+                <div class="timeline-progress" id="progress"></div>
+            </div>
+            <div class="controls-row">
+                <button id="play-btn" title="Play/Pause (Space)">
+                    <svg id="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    <svg id="pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
+                        <rect x="6" y="4" width="4" height="16"></rect>
+                        <rect x="14" y="4" width="4" height="16"></rect>
+                    </svg>
+                </button>
+                <div class="time-display"><span id="current-time">00:00</span> / <span id="duration">00:00</span></div>
+                <div class="spacer"></div>
+                <button id="subtitle-btn" title="Load Subtitles (S)"><svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                        <path d="M7 15h4M13 15h4M7 11h2M13 11h2"></path>
+                    </svg></button>
+                <button id="fullscreen-btn" title="Fullscreen (F or Double-click)"><svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3">
+                        </path>
+                    </svg></button>
+            </div>
+        </div>
+    </div>
+
+    <input type="file" id="file-input" accept="video/*">
+    <input type="file" id="subtitle-input" accept=".srt,.vtt,.ass">
+
+    <script>
+        const dropZone = document.getElementById('drop-zone');
+        const videoContainer = document.getElementById('video-container');
+        const video = document.getElementById('video');
+        const controls = document.getElementById('controls');
+        const playBtn = document.getElementById('play-btn');
+        const playIcon = document.getElementById('play-icon');
+        const pauseIcon = document.getElementById('pause-icon');
+        const timeline = document.getElementById('timeline');
+        const progress = document.getElementById('progress');
+        const currentTimeEl = document.getElementById('current-time');
+        const durationEl = document.getElementById('duration');
+        const fullscreenBtn = document.getElementById('fullscreen-btn');
+        const fileInput = document.getElementById('file-input');
+        const subtitleInput = document.getElementById('subtitle-input');
+        const subtitleBtn = document.getElementById('subtitle-btn');
+        const subtitleTrack = document.getElementById('subtitle-track');
+        const info = document.getElementById('info');
+        const infoText = document.getElementById('info-text');
+
+        let isPlaying = false;
+        let subtitles = [];
+        let currentSubtitle = null;
+        let controlsTimeout;
+
+        dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+        dropZone.addEventListener('dragleave', () => { dropZone.classList.remove('drag-over'); });
+        dropZone.addEventListener('drop', (e) => { e.preventDefault(); dropZone.classList.remove('drag-over'); const file = e.dataTransfer.files[0]; if (file && file.type.startsWith('video/')) { loadVideo(file); } });
+        fileInput.addEventListener('change', (e) => { const file = e.target.files[0]; if (file) loadVideo(file); });
+
+        function loadVideo(file) {
+            const url = URL.createObjectURL(file);
+            video.src = url;
+            dropZone.classList.add('hidden');
+            videoContainer.classList.add('active');
+            showInfo(`Loading: ${file.name}<br>Size: ${formatBytes(file.size)}`);
+            video.addEventListener('loadedmetadata', () => { showInfo(`Ready: ${video.videoWidth}×${video.videoHeight}<br>Duration: ${formatTime(video.duration)}`); setTimeout(() => info.classList.remove('show'), 3000); });
+            video.addEventListener('error', (e) => { showInfo(`❌ Error: Cannot play this file<br>Codec may not be supported<br><br>If this is x265/HEVC:<br>Convert to H.264 using VLC`, 10000); });
+        }
+
+        playBtn.addEventListener('click', togglePlay);
+        video.addEventListener('click', togglePlay);
+        function togglePlay() { if (isPlaying) { video.pause(); isPlaying = false; playIcon.style.display = 'block'; pauseIcon.style.display = 'none'; } else { video.play(); isPlaying = true; playIcon.style.display = 'none'; pauseIcon.style.display = 'block'; } }
+
+        video.addEventListener('timeupdate', () => { const percent = (video.currentTime / video.duration) * 100; progress.style.width = percent + '%'; currentTimeEl.textContent = formatTime(video.currentTime); durationEl.textContent = formatTime(video.duration); updateSubtitle(video.currentTime); });
+        timeline.addEventListener('click', (e) => { const rect = timeline.getBoundingClientRect(); const percent = (e.clientX - rect.left) / rect.width; video.currentTime = percent * video.duration; });
+
+        fullscreenBtn.addEventListener('click', toggleFullscreen);
+        video.addEventListener('dblclick', toggleFullscreen);
+        function toggleFullscreen() { if (!document.fullscreenElement) { videoContainer.requestFullscreen().catch(err => { showInfo(`Fullscreen error: ${err.message}`); }); } else { document.exitFullscreen(); } }
+
+        let lastMove = Date.now();
+        videoContainer.addEventListener('mousemove', () => { controls.classList.add('show'); info.classList.add('show'); lastMove = Date.now(); clearTimeout(controlsTimeout); if (isPlaying) { controlsTimeout = setTimeout(() => { if (Date.now() - lastMove > 2900) { controls.classList.remove('show'); info.classList.remove('show'); } }, 3000); } });
+
+        document.addEventListener('keydown', (e) => { switch (e.key.toLowerCase()) { case ' ': e.preventDefault(); togglePlay(); break; case 'f': e.preventDefault(); toggleFullscreen(); break; case 'arrowleft': e.preventDefault(); video.currentTime = Math.max(0, video.currentTime - 5); break; case 'arrowright': e.preventDefault(); video.currentTime = Math.min(video.duration, video.currentTime + 5); break; case 's': e.preventDefault(); subtitleInput.click(); break; } });
+
+        subtitleBtn.addEventListener('click', () => subtitleInput.click());
+        subtitleInput.addEventListener('change', (e) => { const file = e.target.files[0]; if (!file) return; const reader = new FileReader(); reader.onload = (e) => { const content = e.target.result; subtitles = parseSRT(content); subtitleTrack.classList.add('active'); showInfo(`✓ Subtitles loaded: ${subtitles.length} entries`); }; reader.readAsText(file); });
+
+        function parseSRT(content) {
+            const subs = [];
+            const blocks = content.trim().split('\n\n');
+            blocks.forEach(block => {
+                const lines = block.split('\n');
+                if (lines.length >= 3) {
+                    const timeMatch = lines[1].match(/(\d{2}:\d{2}:\d{2},\d{3})\s*-->\s * (\d{ 2}: \d{ 2}: \d{ 2}, \d{ 3}) /);
+            if (timeMatch) {
+                const start = parseTimeString(timeMatch[1].replace(',', '.'));
+                const end = parseTimeString(timeMatch[2].replace(',', '.'));
+                const text = lines.slice(2).join('\n');
+                subs.push({ start, end, text });
+            }
+        }
+      });
+        return subs;
+    }
+
+        function parseTimeString(timeStr) { const parts = timeStr.split(':'); const hours = parseInt(parts[0]); const minutes = parseInt(parts[1]); const seconds = parseFloat(parts[2]); return hours * 3600 + minutes * 60 + seconds; }
+        function updateSubtitle(currentTime) { if (subtitles.length === 0) return; const sub = subtitles.find(s => currentTime >= s.start && currentTime <= s.end); if (sub) { if (currentSubtitle !== sub) { currentSubtitle = sub; subtitleTrack.textContent = sub.text; } } else { if (currentSubtitle) { currentSubtitle = null; subtitleTrack.textContent = ''; } } }
+        function formatTime(seconds) { if (!isFinite(seconds)) return '00:00'; const h = Math.floor(seconds / 3600); const m = Math.floor((seconds % 3600) / 60); const s = Math.floor(seconds % 60); if (h > 0) { return `${h}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`; } return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`; }
+        function formatBytes(bytes) { const sizes = ['B', 'KB', 'MB', 'GB', 'TB']; if (bytes === 0) return '0 B'; const i = Math.floor(Math.log(bytes) / Math.log(1024)); return Math.round(bytes / Math.pow(1024, i) * 100) / 100 + ' ' + sizes[i]; }
+        function showInfo(text, duration = 3000) { infoText.innerHTML = text; info.classList.add('show'); if (duration > 0) { setTimeout(() => info.classList.remove('show'), duration); } }
+
+        controls.classList.add('show');
+        setTimeout(() => controls.classList.remove('show'), 3000);
+    </script>
+</body>
+
+</html>

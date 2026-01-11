@@ -1,0 +1,176 @@
+{
+    "extName": {
+        "message": "Local Media Player Pro"
+    },
+    "extDescription": {
+        "message": "उन्नत सुविधाओं के साथ उच्च प्रदर्शन स्थानीय वीडियो प्लेयर"
+    },
+    "welcomeTitle": {
+        "message": "Local Media Player Pro"
+    },
+    "welcomeSubtitle": {
+        "message": "उन्नत सुविधाओं के साथ उच्च प्रदर्शन वीडियो प्लेयर"
+    },
+    "openVideoFile": {
+        "message": "वीडियो फ़ाइल खोलें"
+    },
+    "openPlaylist": {
+        "message": "प्लेलिस्ट खोलें"
+    },
+    "noVideoLoaded": {
+        "message": "कोई वीडियो लोड नहीं है"
+    },
+    "statistics": {
+        "message": "सांख्यिकी"
+    },
+    "settings": {
+        "message": "सेटिंग्स"
+    },
+    "close": {
+        "message": "बंद करें"
+    },
+    "playlist": {
+        "message": "प्लेलिस्ट"
+    },
+    "addVideos": {
+        "message": "वीडियो जोड़ें"
+    },
+    "clearPlaylist": {
+        "message": "प्लेलिस्ट साफ़ करें"
+    },
+    "videoControls": {
+        "message": "वीडियो नियंत्रण"
+    },
+    "brightness": {
+        "message": "चमक"
+    },
+    "contrast": {
+        "message": "कंट्रास्ट"
+    },
+    "saturation": {
+        "message": "संतृप्ति"
+    },
+    "audioBoost": {
+        "message": "ऑडियो बूस्ट"
+    },
+    "subtitleSettings": {
+        "message": "उपशीर्षक सेटिंग्स"
+    },
+    "loadSubtitleFile": {
+        "message": "उपशीर्षक फ़ाइल लोड करें"
+    },
+    "chooseFile": {
+        "message": "फ़ाइल चुनें"
+    },
+    "subtitleSync": {
+        "message": "उपशीर्षक सिंक"
+    },
+    "fontSize": {
+        "message": "फ़ॉन्ट आकार"
+    },
+    "fontFamily": {
+        "message": "फ़ॉन्ट परिवार"
+    },
+    "textColor": {
+        "message": "पाठ रंग"
+    },
+    "backgroundColor": {
+        "message": "पृष्ठभूमि रंग"
+    },
+    "backgroundOpacity": {
+        "message": "पृष्ठभूमि अपारदर्शिता"
+    },
+    "verticalPosition": {
+        "message": "ऊर्ध्वाधर स्थिति"
+    },
+    "textShadow": {
+        "message": "पाठ छाया"
+    },
+    "textOutline": {
+        "message": "पाठ रूपरेखा"
+    },
+    "playbackSettings": {
+        "message": "प्लेबैक सेटिंग्स"
+    },
+    "skipInterval": {
+        "message": "स्किप अंतराल (सेकंड)"
+    },
+    "autoplayNext": {
+        "message": "प्लेलिस्ट में अगला स्वचालित रूप से चलाएं"
+    },
+    "resumePlayback": {
+        "message": "अंतिम स्थिति से प्लेबैक फिर से शुरू करें"
+    },
+    "rememberSubtitles": {
+        "message": "प्रति वीडियो उपशीर्षक सेटिंग्स याद रखें"
+    },
+    "languageSettings": {
+        "message": "भाषा सेटिंग्स"
+    },
+    "selectLanguage": {
+        "message": "भाषा चुनें"
+    },
+    "english": {
+        "message": "अंग्रेज़ी"
+    },
+    "spanish": {
+        "message": "स्पेनिश"
+    },
+    "hindi": {
+        "message": "हिंदी"
+    },
+    "french": {
+        "message": "फ्रेंच"
+    },
+    "german": {
+        "message": "जर्मन"
+    },
+    "chinese": {
+        "message": "चीनी"
+    },
+    "japanese": {
+        "message": "जापानी"
+    },
+    "keyboardShortcuts": {
+        "message": "कीबोर्ड शॉर्टकट"
+    },
+    "shortcutsInfo": {
+        "message": "शॉर्टकट सेटिंग्स में कॉन्फ़िगर करने योग्य हैं"
+    },
+    "resetToDefaults": {
+        "message": "डिफ़ॉल्ट पर रीसेट करें"
+    },
+    "resolution": {
+        "message": "रेज़ोल्यूशन"
+    },
+    "fps": {
+        "message": "FPS"
+    },
+    "bitrate": {
+        "message": "बिटरेट"
+    },
+    "codec": {
+        "message": "कोडेक"
+    },
+    "fileSize": {
+        "message": "फ़ाइल आकार"
+    },
+    "duration": {
+        "message": "अवधि"
+    },
+    "playbackSpeed": {
+        "message": "प्लेबैक गति"
+    },
+    "volume": {
+        "message": "वॉल्यूम"
+    },
+    "customSpeed": {
+        "message": "कस्टम गति"
+    },
+    "apply": {
+        "message": "लागू करें"
+    },
+    "readyToPlay": {
+        "message": "चलाने के लिए तैयार"
+    }
+}

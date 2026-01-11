@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Browser Agent</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h1>AI Browser Agent</h1>
+      </div>
+      <div class="status" id="status">
+        <span class="status-dot"></span>
+        <span class="status-text">Initializing...</span>
+      </div>
+    </div>
+
+    <!-- API Key Setup (shown if not configured) -->
+    <div class="api-setup" id="apiSetup" style="display: none;">
+      <div class="setup-card">
+        <h2>🔑 Setup Required</h2>
+        <p>Enter your Gemini API key to get started</p>
+        <input 
+          type="password" 
+          id="apiKeyInput" 
+          placeholder="Enter your Gemini API key"
+          class="input-field"
+        />
+        <button id="saveApiKey" class="btn btn-primary">Save API Key</button>
+        <a href="https://makersuite.google.com/app/apikey" target="_blank" class="link">
+          Get API Key →
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Interface -->
+    <div class="main-interface" id="mainInterface" style="display: none;">
+      <!-- Command Input -->
+      <div class="command-section">
+        <div class="input-group">
+          <input 
+            type="text" 
+            id="commandInput" 
+            placeholder="Ask AI to do anything... (e.g., 'Search for Einstein on Wikipedia')"
+            class="command-input"
+          />
+          <button id="executeCommand" class="btn-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+          <button class="quick-action" data-command="summarize this page">
+            📄 Summarize Page
+          </button>
+          <button class="quick-action" data-command="find best price for">
+            💰 Compare Prices
+          </button>
+          <button class="quick-action" data-command="get latest news on">
+            📰 Latest News
+          </button>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab active" data-tab="results">Results</button>
+        <button class="tab" data-tab="tracked">Tracked Items</button>
+        <button class="tab" data-tab="scheduled">Scheduled Tasks</button>
+        <button class="tab" data-tab="history">History</button>
+      </div>
+
+      <!-- Tab Content -->
+      <div class="tab-content">
+        <!-- Results Tab -->
+        <div class="tab-panel active" id="resultsPanel">
+          <div class="empty-state" id="emptyState">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+              <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <h3>Ready to assist</h3>
+            <p>Enter a command above to get started</p>
+          </div>
+          
+          <div class="results-container" id="resultsContainer" style="display: none;">
+            <!-- Results will be dynamically inserted here -->
+          </div>
+        </div>
+
+        <!-- Tracked Items Tab -->
+        <div class="tab-panel" id="trackedPanel">
+          <div class="tracked-list" id="trackedList">
+            <div class="empty-state">
+              <p>No items being tracked</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scheduled Tasks Tab -->
+        <div class="tab-panel" id="scheduledPanel">
+          <div class="scheduled-list" id="scheduledList">
+            <div class="empty-state">
+              <p>No scheduled tasks</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- History Tab -->
+        <div class="tab-panel" id="historyPanel">
+          <div class="history-list" id="historyList">
+            <div class="empty-state">
+              <p>No command history</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+      <div class="spinner"></div>
+      <p>AI is thinking...</p>
+    </div>
+  </div>
+
+  <script src="popup.js" type="module"></script>
+</body>
+</html>

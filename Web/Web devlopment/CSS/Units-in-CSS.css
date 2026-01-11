@@ -1,0 +1,64 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+
+h2 {
+  color: #333;
+  margin-top: 40px;
+}
+
+.example {
+  color: white;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+/* 1️⃣ Pixels (px) */
+.px-box {
+  background-color: blue;
+  width: 200px;
+  height: 100px;
+  font-size: 20px;
+}
+
+/* 2️⃣ Inches (in) */
+.in-box {
+  background-color: green;
+  width: 2in;
+  height: 1in;
+  font-size: 0.3in;
+}
+
+/* 3️⃣ Centimeters (cm) */
+.cm-box {
+  background-color: orange;
+  width: 5cm;
+  height: 2cm;
+  font-size: 0.8cm;
+}
+
+/* 4️⃣ Millimeters (mm) */
+.mm-box {
+  background-color: red;
+  width: 50mm;
+  height: 20mm;
+  font-size: 5mm;
+}
+
+/* 5️⃣ Points (pt) */
+.pt-box {
+  background-color: purple;
+  width: 200pt;
+  height: 100pt;
+  font-size: 24pt;
+}
+
+/* 6️⃣ Picas (pc) */
+.pc-box {
+  background-color: brown;
+  width: 15pc;
+  height: 6pc;
+  font-size: 2pc;
+}

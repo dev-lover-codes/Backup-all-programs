@@ -1,0 +1,176 @@
+{
+    "extName": {
+        "message": "Local Media Player Pro"
+    },
+    "extDescription": {
+        "message": "具有高级功能的高性能本地视频播放器"
+    },
+    "welcomeTitle": {
+        "message": "Local Media Player Pro"
+    },
+    "welcomeSubtitle": {
+        "message": "具有高级功能的高性能视频播放器"
+    },
+    "openVideoFile": {
+        "message": "打开视频文件"
+    },
+    "openPlaylist": {
+        "message": "打开播放列表"
+    },
+    "noVideoLoaded": {
+        "message": "未加载视频"
+    },
+    "statistics": {
+        "message": "统计信息"
+    },
+    "settings": {
+        "message": "设置"
+    },
+    "close": {
+        "message": "关闭"
+    },
+    "playlist": {
+        "message": "播放列表"
+    },
+    "addVideos": {
+        "message": "添加视频"
+    },
+    "clearPlaylist": {
+        "message": "清空列表"
+    },
+    "videoControls": {
+        "message": "视频控制"
+    },
+    "brightness": {
+        "message": "亮度"
+    },
+    "contrast": {
+        "message": "对比度"
+    },
+    "saturation": {
+        "message": "饱和度"
+    },
+    "audioBoost": {
+        "message": "音频增强"
+    },
+    "subtitleSettings": {
+        "message": "字幕设置"
+    },
+    "loadSubtitleFile": {
+        "message": "加载字幕文件"
+    },
+    "chooseFile": {
+        "message": "选择文件"
+    },
+    "subtitleSync": {
+        "message": "字幕同步"
+    },
+    "fontSize": {
+        "message": "字体大小"
+    },
+    "fontFamily": {
+        "message": "字体系列"
+    },
+    "textColor": {
+        "message": "文本颜色"
+    },
+    "backgroundColor": {
+        "message": "背景颜色"
+    },
+    "backgroundOpacity": {
+        "message": "背景不透明度"
+    },
+    "verticalPosition": {
+        "message": "垂直位置"
+    },
+    "textShadow": {
+        "message": "文本阴影"
+    },
+    "textOutline": {
+        "message": "文本轮廓"
+    },
+    "playbackSettings": {
+        "message": "播放设置"
+    },
+    "skipInterval": {
+        "message": "跳过间隔（秒）"
+    },
+    "autoplayNext": {
+        "message": "自动播放列表中的下一个"
+    },
+    "resumePlayback": {
+        "message": "从上次位置继续播放"
+    },
+    "rememberSubtitles": {
+        "message": "记住每个视频的字幕设置"
+    },
+    "languageSettings": {
+        "message": "语言设置"
+    },
+    "selectLanguage": {
+        "message": "选择语言"
+    },
+    "english": {
+        "message": "英语"
+    },
+    "spanish": {
+        "message": "西班牙语"
+    },
+    "hindi": {
+        "message": "印地语"
+    },
+    "french": {
+        "message": "法语"
+    },
+    "german": {
+        "message": "德语"
+    },
+    "chinese": {
+        "message": "中文"
+    },
+    "japanese": {
+        "message": "日语"
+    },
+    "keyboardShortcuts": {
+        "message": "键盘快捷键"
+    },
+    "shortcutsInfo": {
+        "message": "快捷键可在设置中配置"
+    },
+    "resetToDefaults": {
+        "message": "重置为默认值"
+    },
+    "resolution": {
+        "message": "分辨率"
+    },
+    "fps": {
+        "message": "帧率"
+    },
+    "bitrate": {
+        "message": "比特率"
+    },
+    "codec": {
+        "message": "编解码器"
+    },
+    "fileSize": {
+        "message": "文件大小"
+    },
+    "duration": {
+        "message": "时长"
+    },
+    "playbackSpeed": {
+        "message": "播放速度"
+    },
+    "volume": {
+        "message": "音量"
+    },
+    "customSpeed": {
+        "message": "自定义速度"
+    },
+    "apply": {
+        "message": "应用"
+    },
+    "readyToPlay": {
+        "message": "准备播放"
+    }
+}

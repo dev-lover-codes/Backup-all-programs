@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Media Player Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <!-- Theme Toggle -->
+  <div class="theme-toggle" id="themeToggle" title="Toggle Theme">
+    <svg class="theme-icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+    <svg class="theme-icon moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+  </div>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Welcome Screen -->
+    <div class="welcome-screen" id="welcomeScreen">
+      <div class="welcome-content">
+        <svg class="welcome-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+        <h1 class="welcome-title">Local Media Player Pro</h1>
+        <p class="welcome-subtitle">High-performance video player with advanced features</p>
+        <button class="btn-primary" id="openFileBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+            <polyline points="13 2 13 9 20 9"></polyline>
+          </svg>
+          Open Video File
+        </button>
+        <button class="btn-secondary" id="openPlaylistBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="8" y1="6" x2="21" y2="6"></line>
+            <line x1="8" y1="12" x2="21" y2="12"></line>
+            <line x1="8" y1="18" x2="21" y2="18"></line>
+            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+          </svg>
+          Open Playlist
+        </button>
+      </div>
+    </div>
+
+    <!-- Video Player -->
+    <div class="player-wrapper" id="playerWrapper">
+      <!-- Video Container -->
+      <div class="video-container" id="videoContainer">
+        <video id="videoPlayer" preload="metadata"></video>
+        
+        <!-- Subtitle Track -->
+        <div class="subtitle-track" id="subtitleTrack"></div>
+
+        <!-- Video Overlay Controls -->
+        <div class="video-overlay" id="videoOverlay">
+          <!-- Top Bar -->
+          <div class="top-bar">
+            <div class="video-title" id="videoTitle">No video loaded</div>
+            <div class="top-controls">
+              <button class="icon-btn" id="statsBtn" title="Statistics">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="20" x2="12" y2="10"></line>
+                  <line x1="18" y1="20" x2="18" y2="4"></line>
+                  <line x1="6" y1="20" x2="6" y2="16"></line>
+                </svg>
+              </button>
+              <button class="icon-btn" id="settingsBtn" title="Settings">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path d="M12 1v6m0 6v6m0-13a2 2 0 0 1 2 2m-2-2a2 2 0 0 0-2 2m2 10a2 2 0 0 1 2 2m-2-2a2 2 0 0 0-2 2m10-6h-6m6 0a2 2 0 0 1-2 2m2-2a2 2 0 0 0 2 2m-16 0h6m-6 0a2 2 0 0 1 2-2m-2 2a2 2 0 0 0-2-2"></path>
+                </svg>
+              </button>
+              <button class="icon-btn" id="closePlayerBtn" title="Close">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Center Play Button -->
+          <div class="center-play-btn" id="centerPlayBtn">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+          </div>
+
+          <!-- Loading Indicator -->
+          <div class="loading-indicator" id="loadingIndicator">
+            <div class="spinner"></div>
+          </div>
+
+          <!-- Bottom Controls -->
+          <div class="bottom-controls">
+            <!-- Timeline -->
+            <div class="timeline-container">
+              <div class="timeline" id="timeline">
+                <div class="timeline-progress" id="timelineProgress"></div>
+                <div class="timeline-buffered" id="timelineBuffered"></div>
+                <div class="timeline-handle" id="timelineHandle"></div>
+                <div class="timeline-preview" id="timelinePreview">
+                  <div class="preview-time">00:00</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Controls Row -->
+            <div class="controls-row">
+              <div class="controls-left">
+                <button class="icon-btn" id="playPauseBtn" title="Play/Pause (Space)">
+                  <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <rect x="6" y="4" width="4" height="16"></rect>
+                    <rect x="14" y="4" width="4" height="16"></rect>
+                  </svg>
+                </button>
+                
+                <button class="icon-btn" id="skipBackBtn" title="Skip Backward (←)">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="11 19 2 12 11 5 11 19"></polygon>
+                    <polygon points="22 19 13 12 22 5 22 19"></polygon>
+                  </svg>
+                </button>
+                
+                <button class="icon-btn" id="skipForwardBtn" title="Skip Forward (→)">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="13 5 22 12 13 19 13 5"></polygon>
+                    <polygon points="2 5 11 12 2 19 2 5"></polygon>
+                  </svg>
+                </button>
+
+                <div class="volume-control">
+                  <button class="icon-btn" id="muteBtn" title="Mute (M)">
+                    <svg class="volume-high" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                      <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                    </svg>
+                    <svg class="volume-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                      <line x1="23" y1="9" x2="17" y2="15"></line>
+                      <line x1="17" y1="9" x2="23" y2="15"></line>
+                    </svg>
+                  </button>
+                  <div class="volume-slider-container">
+                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="100">
+                  </div>
+                </div>
+
+                <div class="time-display" id="timeDisplay">
+                  <span id="currentTime">00:00</span>
+                  <span class="time-separator">/</span>
+                  <span id="duration">00:00</span>
+                </div>
+              </div>
+
+              <div class="controls-right">
+                <button class="icon-btn speed-btn" id="speedBtn" title="Playback Speed ([/])">
+                  <span class="speed-text">1.0×</span>
+                </button>
+
+                <button class="icon-btn" id="subtitleBtn" title="Subtitles (S)">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                    <path d="M7 15h4M13 15h4M7 11h2M13 11h2"></path>
+                  </svg>
+                </button>
+
+                <button class="icon-btn" id="loopBtn" title="Loop">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="17 1 21 5 17 9"></polyline>
+                    <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                    <polyline points="7 23 3 19 7 15"></polyline>
+                    <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                  </svg>
+                </button>
+
+                <button class="icon-btn" id="pipBtn" title="Picture-in-Picture">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+                    <rect x="13" y="10" width="7" height="7" rx="1"></rect>
+                  </svg>
+                </button>
+
+                <button class="icon-btn" id="screenshotBtn" title="Screenshot">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                    <circle cx="12" cy="13" r="4"></circle>
+                  </svg>
+                </button>
+
+                <button class="icon-btn" id="fullscreenBtn" title="Fullscreen (F)">
+                  <svg class="fullscreen-enter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                  </svg>
+                  <svg class="fullscreen-exit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="sidebar" id="sidebar">
+        <!-- Playlist Tab -->
+        <div class="sidebar-content" id="playlistTab">
+          <div class="sidebar-header">
+            <h3>Playlist</h3>
+            <div class="sidebar-actions">
+              <button class="icon-btn-small" id="addToPlaylistBtn" title="Add Videos">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </button>
+              <button class="icon-btn-small" id="clearPlaylistBtn" title="Clear Playlist">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="3 6 5 6 21 6"></polyline>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="playlist-items" id="playlistItems">
+            <!-- Playlist items will be added dynamically -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings Panel -->
+    <div class="panel" id="settingsPanel">
+      <div class="panel-header">
+        <h3>Settings</h3>
+        <button class="icon-btn-small" id="closeSettingsBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="panel-content">
+        <!-- Video Controls -->
+        <div class="setting-section">
+          <h4>Video Controls</h4>
+          
+          <div class="setting-item">
+            <label for="brightnessSlider">Brightness</label>
+            <input type="range" id="brightnessSlider" min="0" max="200" value="100">
+            <span id="brightnessValue">100%</span>
+          </div>
+
+          <div class="setting-item">
+            <label for="contrastSlider">Contrast</label>
+            <input type="range" id="contrastSlider" min="0" max="200" value="100">
+            <span id="contrastValue">100%</span>
+          </div>
+
+          <div class="setting-item">
+            <label for="saturationSlider">Saturation</label>
+            <input type="range" id="saturationSlider" min="0" max="200" value="100">
+            <span id="saturationValue">100%</span>
+          </div>
+
+          <div class="setting-item">
+            <label for="audioBoostSlider">Audio Boost</label>
+            <input type="range" id="audioBoostSlider" min="100" max="200" value="100">
+            <span id="audioBoostValue">100%</span>
+          </div>
+        </div>
+
+        <!-- Subtitle Settings -->
+        <div class="setting-section">
+          <h4>Subtitle Settings</h4>
+          
+          <div class="setting-item">
+            <label>Load Subtitle File</label>
+            <button class="btn-secondary" id="loadSubtitleBtn">Choose File</button>
+          </div>
+
+          <div class="setting-item">
+            <label for="subtitleSyncSlider">Subtitle Sync (ms)</label>
+            <input type="range" id="subtitleSyncSlider" min="-5000" max="5000" value="0" step="100">
+            <span id="subtitleSyncValue">0ms</span>
+          </div>
+
+          <div class="setting-item">
+            <label for="subtitleSizeSlider">Font Size</label>
+            <input type="range" id="subtitleSizeSlider" min="12" max="48" value="24">
+            <span id="subtitleSizeValue">24px</span>
+          </div>
+
+          <div class="setting-item">
+            <label for="subtitleColorPicker">Text Color</label>
+            <input type="color" id="subtitleColorPicker" value="#ffffff">
+          </div>
+
+          <div class="setting-item">
+            <label for="subtitleBgColorPicker">Background Color</label>
+            <input type="color" id="subtitleBgColorPicker" value="#000000">
+          </div>
+
+          <div class="setting-item">
+            <label for="subtitleBgOpacitySlider">Background Opacity</label>
+            <input type="range" id="subtitleBgOpacitySlider" min="0" max="100" value="80">
+            <span id="subtitleBgOpacityValue">80%</span>
+          </div>
+
+          <div class="setting-item">
+            <label for="subtitlePositionSlider">Vertical Position</label>
+            <input type="range" id="subtitlePositionSlider" min="0" max="100" value="90">
+            <span id="subtitlePositionValue">90%</span>
+          </div>
+        </div>
+
+        <!-- Playback Settings -->
+        <div class="setting-section">
+          <h4>Playback Settings</h4>
+          
+          <div class="setting-item">
+            <label for="skipIntervalInput">Skip Interval (seconds)</label>
+            <input type="number" id="skipIntervalInput" min="1" max="60" value="5">
+          </div>
+
+          <div class="setting-item checkbox-item">
+            <label for="autoplayCheckbox">
+              <input type="checkbox" id="autoplayCheckbox">
+              <span>Autoplay next in playlist</span>
+            </label>
+          </div>
+
+          <div class="setting-item checkbox-item">
+            <label for="resumeCheckbox">
+              <input type="checkbox" id="resumeCheckbox" checked>
+              <span>Resume playback from last position</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Reset Button -->
+        <button class="btn-primary" id="resetSettingsBtn">Reset to Defaults</button>
+      </div>
+    </div>
+
+    <!-- Stats Panel -->
+    <div class="panel" id="statsPanel">
+      <div class="panel-header">
+        <h3>Statistics</h3>
+        <button class="icon-btn-small" id="closeStatsBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="panel-content">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-label">Resolution</span>
+            <span class="stat-value" id="statResolution">-</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">FPS</span>
+            <span class="stat-value" id="statFPS">-</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Bitrate</span>
+            <span class="stat-value" id="statBitrate">-</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Codec</span>
+            <span class="stat-value" id="statCodec">-</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">File Size</span>
+            <span class="stat-value" id="statFileSize">-</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Duration</span>
+            <span class="stat-value" id="statDuration">-</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Playback Speed</span>
+            <span class="stat-value" id="statSpeed">1.0×</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Volume</span>
+            <span class="stat-value" id="statVolume">100%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Speed Control Panel -->
+    <div class="speed-panel" id="speedPanel">
+      <div class="speed-options">
+        <button class="speed-option" data-speed="0.25">0.25×</button>
+        <button class="speed-option" data-speed="0.5">0.5×</button>
+        <button class="speed-option" data-speed="0.75">0.75×</button>
+        <button class="speed-option active" data-speed="1.0">1.0×</button>
+        <button class="speed-option" data-speed="1.25">1.25×</button>
+        <button class="speed-option" data-speed="1.5">1.5×</button>
+        <button class="speed-option" data-speed="1.75">1.75×</button>
+        <button class="speed-option" data-speed="2.0">2.0×</button>
+        <button class="speed-option" data-speed="3.0">3.0×</button>
+        <button class="speed-option" data-speed="4.0">4.0×</button>
+        <button class="speed-option" data-speed="5.0">5.0×</button>
+      </div>
+      <div class="speed-custom">
+        <label>Custom Speed:</label>
+        <input type="number" id="customSpeedInput" min="0.1" max="5" step="0.1" value="1.0">
+        <button class="btn-secondary" id="applyCustomSpeedBtn">Apply</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden File Inputs -->
+  <input type="file" id="videoFileInput" accept="video/*" style="display: none;">
+  <input type="file" id="playlistFileInput" accept="video/*" multiple style="display: none;">
+  <input type="file" id="subtitleFileInput" accept=".srt,.vtt,.ass" style="display: none;">
+
+  <script src="popup.js"></script>
+</body>
+</html>

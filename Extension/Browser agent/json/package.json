@@ -1,0 +1,21 @@
+{
+    "name": "ai-browser-agent",
+    "version": "1.0.0",
+    "description": "AI-powered Chrome extension using Gemini API for intelligent browser automation",
+    "scripts": {
+        "build": "echo Building extension...",
+        "test": "echo No tests configured yet",
+        "lint": "echo Linting...",
+        "package": "powershell -Command \"Compress-Archive -Path * -DestinationPath ai-browser-agent.zip -Force\""
+    },
+    "keywords": [
+        "chrome-extension",
+        "ai",
+        "gemini",
+        "automation",
+        "web-scraping",
+        "price-tracking"
+    ],
+    "author": "Your Name",
+    "license": "MIT"
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>jsPDF CDN Loader</title>
+</head>
+
+<body>
+    <h1>jsPDF Library Placeholder</h1>
+    <p>This is a placeholder file. For the extension to work with PDF exports, you need to include the jsPDF library.
+    </p>
+
+    <h2>How to Add jsPDF:</h2>
+    <ol>
+        <li>Download jsPDF from: <a href="https://github.com/parallax/jsPDF">https://github.com/parallax/jsPDF</a></li>
+        <li>Or use CDN version: <code>https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js</code></li>
+        <li>Place the jspdf.umd.min.js file in this directory (lib/vendor/)</li>
+        <li>Reference it in your HTML files</li>
+    </ol>
+
+    <h2>Alternative: Use CDN in popup.html</h2>
+    <p>Add this script tag to popup.html before exporter.js:</p>
+    <pre>&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"&gt;&lt;/script&gt;</pre>
+
+    <h2>For Development:</h2>
+    <p>Update popup.html to include:</p>
+    <pre>
+&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"&gt;&lt;/script&gt;
+&lt;script src="../lib/exporter.js"&gt;&lt;/script&gt;
+  </pre>
+</body>
+
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Shortcuts - Local Media Player Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #6e6e73;
+            font-size: 18px;
+            margin-bottom: 48px;
+        }
+
+        .shortcuts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .shortcut-card {
+            background: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 100%);
+            border-radius: 16px;
+            padding: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+        }
+
+        .shortcut-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            border-color: #0071e3;
+        }
+
+        .shortcut-key {
+            display: inline-block;
+            background: white;
+            color: #1d1d1f;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #d1d1d6;
+        }
+
+        .shortcut-action {
+            color: #1d1d1f;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .category {
+            margin-bottom: 40px;
+        }
+
+        .category-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #0071e3;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #0071e3;
+        }
+
+        .tip {
+            background: linear-gradient(135deg, #fff3cd 0%, #fff8e1 100%);
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 32px;
+        }
+
+        .tip-title {
+            font-weight: 600;
+            color: #856404;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .tip-text {
+            color: #856404;
+            line-height: 1.6;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 48px;
+            color: #6e6e73;
+            font-size: 14px;
+        }
+
+        .print-btn {
+            display: block;
+            width: 200px;
+            margin: 32px auto;
+            padding: 14px 28px;
+            background: #0071e3;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .print-btn:hover {
+            background: #0077ed;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 113, 227, 0.3);
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+
+            .print-btn {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 32px 24px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .shortcuts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>⌨️ Keyboard Shortcuts</h1>
+        <p class="subtitle">Master Local Media Player Pro with these quick keys</p>
+
+        <!-- Playback Controls -->
+        <div class="category">
+            <h2 class="category-title">🎮 Playback Controls</h2>
+            <div class="shortcuts-grid">
+                <div class="shortcut-card">
+                    <div class="shortcut-key">Space</div>
+                    <div class="shortcut-action">Play / Pause video</div>
+                </div>
+                <div class="shortcut-card">
+                    <div class="shortcut-key">←</div>
+                    <div class="shortcut-action">Skip backward (default 5 seconds)</div>
+                </div>
+                <div class="shortcut-card">
+                    <div class="shortcut-key">→</div>
+                    <div class="shortcut-action">Skip forward (default 5 seconds)</div>
+                </div>
+                <div class="shortcut-card">
+                    <div class="shortcut-key">R</div>
+                    <div class="shortcut-action">Reset playback speed to 1.0×</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Speed Controls -->
+        <div class="category">
+            <h2 class="category-title">⚡ Speed Controls</h2>
+            <div class="shortcuts-grid">
+                <div class="shortcut-card">
+                    <div class="shortcut-key">[</div>
+                    <div class="shortcut-action">Decrease playback speed by 0.1×</div>
+                </div>
+                <div class="shortcut-card">
+                    <div class="shortcut-key">]</div>
+                    <div class="shortcut-action">Increase playback speed by 0.1×</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Volume Controls -->
+        <div class="category">
+            <h2 class="category-title">🔊 Volume Controls</h2>
+            <div class="shortcuts-grid">
+                <div class="shortcut-card">
+                    <div class="shortcut-key">↑</div>
+                    <div class="shortcut-action">Increase volume by 5%</div>
+                </div>
+                <div class="shortcut-card">
+                    <div class="shortcut-key">↓</div>
+                    <div class="shortcut-action">Decrease volume by 5%</div>
+                </div>
+                <div class="shortcut-card">
+                    <div class="shortcut-key">M</div>
+                    <div class="shortcut-action">Mute / Unmute audio</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Display Controls -->
+        <div class="category">
+            <h2 class="category-title">🖥️ Display Controls</h2>
+            <div class="shortcuts-grid">
+                <div class="shortcut-card">
+                    <div class="shortcut-key">F</div>
+                    <div class="shortcut-action">Toggle fullscreen mode</div>
+                </div>
+                <div class="shortcut-card">
+                    <div class="shortcut-key">S</div>
+                    <div class="shortcut-action">Toggle subtitles on/off</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tips -->
+        <div class="tip">
+            <div class="tip-title">💡 Pro Tips</div>
+            <div class="tip-text">
+                • Click and drag on the timeline for quick scrubbing<br>
+                • Double-click the video to toggle fullscreen<br>
+                • Hover over timeline to see preview timestamps<br>
+                • Use custom speed values (e.g., 1.37×) for precise control<br>
+                • All shortcuts work when not typing in input fields
+            </div>
+        </div>
+
+        <button class="print-btn" onclick="window.print()">🖨️ Print Reference</button>
+
+        <div class="footer">
+            <strong>Local Media Player Pro v1.0</strong><br>
+            Made with ❤️ for video enthusiasts
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,176 @@
+{
+    "extName": {
+        "message": "Local Media Player Pro"
+    },
+    "extDescription": {
+        "message": "Lecteur vidéo local haute performance avec fonctionnalités avancées"
+    },
+    "welcomeTitle": {
+        "message": "Local Media Player Pro"
+    },
+    "welcomeSubtitle": {
+        "message": "Lecteur vidéo haute performance avec fonctionnalités avancées"
+    },
+    "openVideoFile": {
+        "message": "Ouvrir un Fichier Vidéo"
+    },
+    "openPlaylist": {
+        "message": "Ouvrir une Liste de Lecture"
+    },
+    "noVideoLoaded": {
+        "message": "Aucune vidéo chargée"
+    },
+    "statistics": {
+        "message": "Statistiques"
+    },
+    "settings": {
+        "message": "Paramètres"
+    },
+    "close": {
+        "message": "Fermer"
+    },
+    "playlist": {
+        "message": "Liste de Lecture"
+    },
+    "addVideos": {
+        "message": "Ajouter des Vidéos"
+    },
+    "clearPlaylist": {
+        "message": "Effacer la Liste"
+    },
+    "videoControls": {
+        "message": "Contrôles Vidéo"
+    },
+    "brightness": {
+        "message": "Luminosité"
+    },
+    "contrast": {
+        "message": "Contraste"
+    },
+    "saturation": {
+        "message": "Saturation"
+    },
+    "audioBoost": {
+        "message": "Amplification Audio"
+    },
+    "subtitleSettings": {
+        "message": "Paramètres des Sous-titres"
+    },
+    "loadSubtitleFile": {
+        "message": "Charger un Fichier de Sous-titres"
+    },
+    "chooseFile": {
+        "message": "Choisir un Fichier"
+    },
+    "subtitleSync": {
+        "message": "Synchronisation des Sous-titres"
+    },
+    "fontSize": {
+        "message": "Taille de Police"
+    },
+    "fontFamily": {
+        "message": "Famille de Police"
+    },
+    "textColor": {
+        "message": "Couleur du Texte"
+    },
+    "backgroundColor": {
+        "message": "Couleur d'Arrière-plan"
+    },
+    "backgroundOpacity": {
+        "message": "Opacité de l'Arrière-plan"
+    },
+    "verticalPosition": {
+        "message": "Position Verticale"
+    },
+    "textShadow": {
+        "message": "Ombre du Texte"
+    },
+    "textOutline": {
+        "message": "Contour du Texte"
+    },
+    "playbackSettings": {
+        "message": "Paramètres de Lecture"
+    },
+    "skipInterval": {
+        "message": "Intervalle de Saut (secondes)"
+    },
+    "autoplayNext": {
+        "message": "Lecture automatique suivante dans la liste"
+    },
+    "resumePlayback": {
+        "message": "Reprendre la lecture depuis la dernière position"
+    },
+    "rememberSubtitles": {
+        "message": "Mémoriser les paramètres de sous-titres par vidéo"
+    },
+    "languageSettings": {
+        "message": "Paramètres de Langue"
+    },
+    "selectLanguage": {
+        "message": "Sélectionner la Langue"
+    },
+    "english": {
+        "message": "Anglais"
+    },
+    "spanish": {
+        "message": "Espagnol"
+    },
+    "hindi": {
+        "message": "Hindi"
+    },
+    "french": {
+        "message": "Français"
+    },
+    "german": {
+        "message": "Allemand"
+    },
+    "chinese": {
+        "message": "Chinois"
+    },
+    "japanese": {
+        "message": "Japonais"
+    },
+    "keyboardShortcuts": {
+        "message": "Raccourcis Clavier"
+    },
+    "shortcutsInfo": {
+        "message": "Les raccourcis sont configurables dans les paramètres"
+    },
+    "resetToDefaults": {
+        "message": "Réinitialiser aux Valeurs par Défaut"
+    },
+    "resolution": {
+        "message": "Résolution"
+    },
+    "fps": {
+        "message": "FPS"
+    },
+    "bitrate": {
+        "message": "Débit Binaire"
+    },
+    "codec": {
+        "message": "Codec"
+    },
+    "fileSize": {
+        "message": "Taille du Fichier"
+    },
+    "duration": {
+        "message": "Durée"
+    },
+    "playbackSpeed": {
+        "message": "Vitesse de Lecture"
+    },
+    "volume": {
+        "message": "Volume"
+    },
+    "customSpeed": {
+        "message": "Vitesse Personnalisée"
+    },
+    "apply": {
+        "message": "Appliquer"
+    },
+    "readyToPlay": {
+        "message": "Prêt à lire"
+    }
+}

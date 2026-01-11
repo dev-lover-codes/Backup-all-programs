@@ -1,0 +1,67 @@
+<!--it dosent suppert embed of video directly playing it just support 
+post link for previdew the post not support video playing directly -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Embed Telegram Video Post</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f9f9f9;
+        padding: 20px;
+        text-align: center;
+      }
+      .container {
+        max-width: 800px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 0 10px rgb(0 0 0 / 0.1);
+        border-radius: 8px;
+      }
+      h1 {
+        color: #2c3e50;
+        margin-bottom: 24px;
+      }
+      .fallback-link {
+        margin-top: 16px;
+        font-size: 0.9rem;
+        color: #555;
+      }
+      .fallback-link a {
+        color: #1a73e8;
+        text-decoration: none;
+      }
+      .fallback-link a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Embedded Telegram Video Post</h1>
+
+      <!-- Telegram embed widget -->
+      <script
+        async
+        src="https://telegram.org/js/telegram-widget.js?22"
+        data-telegram-post="Junji_Ito_Collection_Dub_Hindi/103"
+        data-width="100%"
+      ></script>
+
+      <p class="fallback-link">
+        If the video doesn’t play here,
+        <a
+          href="https://t.me/Junji_Ito_Collection_Dub_Hindi/103"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          open it on Telegram </a
+        >.
+      </p>
+    </div>
+  </body>
+</html>

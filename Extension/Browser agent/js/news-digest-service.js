@@ -1,0 +1,303 @@
+// News Digest Service - Automated news aggregation and summarization
+export class NewsDigestService {
+    constructor() {
+        this.newsSources = [
+            { name: 'Google News', url: 'https://news.google.com/search?q=' },
+            { name: 'BBC', url: 'https://www.bbc.com/search?q=' },
+            { name: 'Reuters', url: 'https://www.reuters.com/search/news?query=' },
+            { name: 'AP News', url: 'https://apnews.com/search?q=' }
+        ];
+        this.subscriptions = new Map();
+        this.digestHistory = [];
+    }
+
+    async initialize() {
+        const data = await chrome.storage.local.get(['news_subscriptions', 'digest_history']);
+
+        if (data.news_subscriptions) {
+            this.subscriptions = new Map(Object.entries(data.news_subscriptions));
+        }
+
+        if (data.digest_history) {
+            this.digestHistory = data.digest_history;
+        }
+    }
+
+    async subscribe(topic, frequency = 'daily') {
+        const subscriptionId = `sub_${Date.now()}`;
+
+        this.subscriptions.set(subscriptionId, {
+            id: subscriptionId,
+            topic,
+            frequency,
+            createdAt: Date.now(),
+            lastDelivered: null,
+            active: true
+        });
+
+        await this.saveToStorage();
+
+        // Schedule digest delivery
+        await this.scheduleDigest(subscriptionId);
+
+        return { success: true, subscriptionId };
+    }
+
+    async scheduleDigest(subscriptionId) {
+        const subscription = this.subscriptions.get(subscriptionId);
+
+        if (!subscription) {
+            return;
+        }
+
+        let periodInMinutes;
+        switch (subscription.frequency) {
+            case 'hourly':
+                periodInMinutes = 60;
+                break;
+            case 'daily':
+                periodInMinutes = 24 * 60;
+                break;
+            case 'weekly':
+                periodInMinutes = 7 * 24 * 60;
+                break;
+            default:
+                periodInMinutes = 24 * 60;
+        }
+
+        chrome.alarms.create(`news_digest_${subscriptionId}`, {
+            periodInMinutes
+        });
+    }
+
+    async generateDigest(topic, geminiAI) {
+        const prompt = `Create a comprehensive news digest for "${topic}" covering the last 24 hours. Include:
+
+1. **Top Headlines** (3-5 major stories)
+   - Brief summary of each
+   - Source and credibility
+
+2. **Key Developments**
+   - Important updates
+   - Trending aspects
+
+3. **Analysis**
+   - What this means
+   - Potential implications
+
+4. **Related Topics**
+   - Connected stories
+   - Background context
+
+Format as a newsletter-style digest.`;
+
+        try {
+            const digest = await geminiAI.generateContent(prompt, {
+                maxOutputTokens: 3072
+            });
+
+            const digestEntry = {
+                topic,
+                content: digest,
+                timestamp: Date.now(),
+                sources: this.newsSources.map(s => s.name)
+            };
+
+            this.digestHistory.unshift(digestEntry);
+            if (this.digestHistory.length > 50) {
+                this.digestHistory = this.digestHistory.slice(0, 50);
+            }
+
+            await this.saveToStorage();
+
+            return {
+                success: true,
+                digest: digestEntry
+            };
+        } catch (error) {
+            return { success: false, error: error.message };
+        }
+    }
+
+    async getCategorizedNews(categories, geminiAI) {
+        const results = {};
+
+        for (const category of categories) {
+            const digest = await this.generateDigest(category, geminiAI);
+            if (digest.success) {
+                results[category] = digest.digest;
+            }
+        }
+
+        return {
+            success: true,
+            categories: results,
+            generatedAt: Date.now()
+        };
+    }
+
+    async createWeeklyReport(topics, geminiAI) {
+        const prompt = `Create a comprehensive weekly news report covering these topics:
+${topics.join(', ')}
+
+Structure:
+# Weekly News Report
+*Week of ${new Date().toLocaleDateString()}*
+
+## Executive Summary
+[Brief overview of the week]
+
+${topics.map(topic => `
+## ${topic}
+### Major Developments
+[Key stories]
+
+### Trend Analysis
+[What's changing]
+
+### Outlook
+[What to watch]
+`).join('\n')}
+
+## Conclusion
+[Overall synthesis]`;
+
+        try {
+            const report = await geminiAI.generateContent(prompt, {
+                maxOutputTokens: 4096
+            });
+
+            return {
+                success: true,
+                report,
+                topics,
+                weekOf: new Date().toLocaleDateString()
+            };
+        } catch (error) {
+            return { success: false, error: error.message };
+        }
+    }
+
+    async sendDigestEmail(digest, emailService) {
+        const subject = `News Digest: ${digest.topic} - ${new Date().toLocaleDateString()}`;
+        const body = `
+${digest.content}
+
+---
+Generated by AI Browser Agent
+${new Date().toLocaleString()}
+    `.trim();
+
+        return await emailService.createDraft('me', subject, body);
+    }
+
+    async deliverScheduledDigest(subscriptionId, geminiAI, emailService) {
+        const subscription = this.subscriptions.get(subscriptionId);
+
+        if (!subscription || !subscription.active) {
+            return;
+        }
+
+        const digest = await this.generateDigest(subscription.topic, geminiAI);
+
+        if (digest.success) {
+            // Send notification
+            chrome.notifications.create({
+                type: 'basic',
+                iconUrl: 'icon48.png',
+                title: `News Digest: ${subscription.topic}`,
+                message: digest.digest.content.substring(0, 200) + '...',
+                buttons: [
+                    { title: 'View Full Digest' },
+                    { title: 'Email Me' }
+                ]
+            });
+
+            // Update last delivered
+            subscription.lastDelivered = Date.now();
+            await this.saveToStorage();
+        }
+    }
+
+    async unsubscribe(subscriptionId) {
+        const subscription = this.subscriptions.get(subscriptionId);
+
+        if (subscription) {
+            subscription.active = false;
+            chrome.alarms.clear(`news_digest_${subscriptionId}`);
+            await this.saveToStorage();
+        }
+
+        return { success: true };
+    }
+
+    async searchNews(query, geminiAI) {
+        const prompt = `Search for recent news about "${query}" and provide:
+
+1. **Latest Headlines** (5 most recent)
+2. **Summary** of each story
+3. **Timeline** of events
+4. **Key Players** involved
+5. **Impact Analysis**
+
+Focus on credible sources and fact-based reporting.`;
+
+        try {
+            const results = await geminiAI.generateContent(prompt);
+
+            return {
+                success: true,
+                query,
+                results,
+                searchedAt: Date.now()
+            };
+        } catch (error) {
+            return { success: false, error: error.message };
+        }
+    }
+
+    async compareNewsCoverage(topic, geminiAI) {
+        const prompt = `Analyze how different news sources are covering "${topic}". Compare:
+
+1. **Mainstream Media** perspective
+2. **International** coverage
+3. **Specialized/Trade** publications
+4. **Social Media** trends
+
+Identify:
+- Common narratives
+- Differing angles
+- Potential biases
+- Missing perspectives`;
+
+        try {
+            const analysis = await geminiAI.generateContent(prompt);
+
+            return {
+                success: true,
+                topic,
+                analysis
+            };
+        } catch (error) {
+            return { success: false, error: error.message };
+        }
+    }
+
+    getSubscriptions() {
+        return Array.from(this.subscriptions.values());
+    }
+
+    getHistory() {
+        return this.digestHistory;
+    }
+
+    async saveToStorage() {
+        const subscriptionsObj = Object.fromEntries(this.subscriptions);
+        await chrome.storage.local.set({
+            news_subscriptions: subscriptionsObj,
+            digest_history: this.digestHistory
+        });
+    }
+}
+
+export default NewsDigestService;
