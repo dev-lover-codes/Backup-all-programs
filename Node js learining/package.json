@@ -1,0 +1,13 @@
+{
+  "name": "my",
+  "version": "1.0.0",
+  "description": "non",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "hello.js",
+  "scripts": {
+    "test": "2+2",
+    "start": "node hello.js"
+  }
+}
