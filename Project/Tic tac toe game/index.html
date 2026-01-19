@@ -1,130 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neon Tic Tac Toe</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tic-Tac-Toe Game</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="background-blobs">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-    </div>
 
-    <!-- Screen 1: Welcome -->
-    <section id="welcome-screen" class="screen active">
-        <div class="content-wrapper">
-            <h1 class="main-title">TIC <span class="highlight">TAC</span> TOE</h1>
-            <p class="subtitle">The Classic Game, Reimagined.</p>
-            <div class="floating-shapes">
-                <div class="shape shape-x">✖</div>
-                <div class="shape shape-o">⭕</div>
-            </div>
-            <button id="start-btn" class="btn primary large pulse">Start Game</button>
-        </div>
-    </section>
-
-    <!-- Screen 2: Emoji Selection -->
-    <section id="selection-screen" class="screen hidden">
-        <div class="content-wrapper">
-            <h2>Choose Your Vibe</h2>
-            <p class="instruction">Select an emoji for Player 1</p>
-            
-            <div class="emoji-grid" id="emoji-grid">
-                <!-- Emojis injected via JS -->
-            </div>
-
-            <div class="selected-preview">
-                <div class="preview-box">
-                    <span class="label">You</span>
-                    <span id="p1-emoji-preview" class="emoji-preview">❓</span>
-                </div>
-                <div class="vs">VS</div>
-                <div class="preview-box">
-                    <span class="label">Opponent</span>
-                    <span id="p2-emoji-preview" class="emoji-preview">❓</span>
-                </div>
-            </div>
-
-            <button id="continue-btn" class="btn secondary disabled">Continue</button>
-        </div>
-    </section>
-
-    <!-- Screen 3: Game Mode & Play -->
-    <section id="game-screen" class="screen hidden">
-        <div class="content-wrapper">
-            <div class="mode-selection" id="mode-selection">
-                <h2>Select Mode</h2>
-                <div class="mode-buttons">
-                    <button class="btn mode-btn" data-mode="ai">
-                        <span class="icon">🤖</span> Play vs AI
-                    </button>
-                    <button class="btn mode-btn" data-mode="friend">
-                        <span class="icon">👥</span> Play vs Friend
-                    </button>
-                    <button class="btn mode-btn" data-mode="online">
-                        <span class="icon">🌐</span> Play Online
-                    </button>
-                </div>
-            </div>
-
-            <div class="game-board-wrapper hidden" id="game-board-wrapper">
-                <header>
-                    <button id="back-btn" class="icon-btn">←</button>
-                    <div class="turn-indicator">
-                        <span id="turn-text">Your Turn</span>
-                    </div>
-                    <button id="reset-game-btn" class="icon-btn">↺</button>
-                </header>
-
-                <div class="score-board">
-                    <div class="score-box player-x">
-                        <span class="player-label">You</span>
-                        <span class="score-value" id="score-x">0</span>
-                    </div>
-                    <div class="score-box ties">
-                        <span class="player-label">Ties</span>
-                        <span class="score-value" id="score-ties">0</span>
-                    </div>
-                    <div class="score-box player-o">
-                        <span class="player-label">Opponent</span>
-                        <span class="score-value" id="score-o">0</span>
-                    </div>
-                </div>
-
-                <div class="board" id="board">
-                    <div class="cell" data-index="0"></div>
-                    <div class="cell" data-index="1"></div>
-                    <div class="cell" data-index="2"></div>
-                    <div class="cell" data-index="3"></div>
-                    <div class="cell" data-index="4"></div>
-                    <div class="cell" data-index="5"></div>
-                    <div class="cell" data-index="6"></div>
-                    <div class="cell" data-index="7"></div>
-                    <div class="cell" data-index="8"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Victory Overlay -->
-    <div id="modal" class="modal hidden">
+    <!-- Winner Modal -->
+    <div id="winner-modal" class="modal hide">
         <div class="modal-content">
-            <h2 id="modal-message">You Win!</h2>
-            <div class="modal-actions">
-                <button id="modal-restart-btn" class="btn primary">Play Again</button>
-                <button id="modal-home-btn" class="btn secondary">Home</button>
-            </div>
+            <h2 id="winner-text">Player X Wins!</h2>
+            <button id="modal-new-btn">New Game</button>
         </div>
     </div>
 
-    <canvas id="confetti-canvas"></canvas>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="script.js"></script>
+    <main>
+        <h1>Tic Tac Toe</h1>
+        <div class="container">
+            <div class="game-wrapper">
+                <div class="game">
+                    <button class="box"></button>
+                    <button class="box"></button>
+                    <button class="box"></button>
+                    <button class="box"></button>
+                    <button class="box"></button>
+                    <button class="box"></button>
+                    <button class="box"></button>
+                    <button class="box"></button>
+                    <button class="box"></button>
+                </div>
+            </div>
+        </div>
+        <button id="reset-btn">Reset Game</button>
+        <button id="new-btn">New Game</button>
+    </main>
+
+    <script src="app.js"></script>
 </body>
 </html>
