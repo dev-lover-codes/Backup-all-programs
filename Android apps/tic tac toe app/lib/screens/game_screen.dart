@@ -187,9 +187,9 @@ class GameScreen extends StatelessWidget {
 
   Widget _buildWinStars(int moves) {
     int stars = 0;
-    if (moves <= 3)
+    if (moves <= 3) {
       stars = 3;
-    else if (moves == 4)
+    } else if (moves == 4)
       stars = 2;
     else if (moves == 5)
       stars = 1;

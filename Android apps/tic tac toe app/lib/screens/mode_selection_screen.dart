@@ -245,7 +245,7 @@ class _ModeSelectionScreenState extends State<ModeSelectionScreen> {
                         subtitle,
                         style: AppTheme.captionStyle.copyWith(
                           fontSize: 13,
-                          color: (gradient as LinearGradient).colors.first,
+                          color: (gradient).colors.first,
                         ),
                       ),
                       const SizedBox(height: 8),
@@ -277,7 +277,7 @@ class _ModeSelectionScreenState extends State<ModeSelectionScreen> {
                     ),
                     child: Icon(
                       Icons.arrow_forward_ios,
-                      color: (gradient as LinearGradient).colors.first,
+                      color: (gradient).colors.first,
                       size: 16,
                     ),
                   ),

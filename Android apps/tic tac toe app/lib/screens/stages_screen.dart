@@ -22,8 +22,9 @@ class StagesScreen extends StatelessWidget {
       body: Consumer<GameProvider>(
         builder: (context, game, child) {
           final stages = game.levelStages[levelId];
-          if (stages == null)
+          if (stages == null) {
             return const Center(child: Text("Error loading stages"));
+          }
 
           return GridView.builder(
             padding: const EdgeInsets.all(20),

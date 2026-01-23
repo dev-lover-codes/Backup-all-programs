@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 import '../utils/app_theme.dart';
 import '../services/supabase_service.dart';
 import 'package:flutter_animate/flutter_animate.dart';
