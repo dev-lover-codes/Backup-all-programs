@@ -2,6 +2,8 @@
 
 A production-grade, fully asynchronous Telegram bot built with **aiogram 3.x** and **yt-dlp** for downloading media from YouTube, Instagram, and Pinterest.
 
+---
+
 ## ✨ Features
 
 - ✅ **Fully Async**: Never blocks the event loop
@@ -12,23 +14,7 @@ A production-grade, fully asynchronous Telegram bot built with **aiogram 3.x** a
 - 🧹 **Auto-cleanup**: Temporary files deleted after sending
 - ❌ **Robust Error Handling**: Graceful failures with user feedback
 
-## 🏗️ Architecture
-
-```
-bot/
-├── main.py              # Entry point, bot initialization
-├── config.py            # Environment-based configuration
-├── handlers/
-│   ├── start.py         # /start command handler
-│   ├── downloader.py    # URL detection and validation
-│   └── callbacks.py     # Download execution logic
-├── keyboards/
-│   └── inline.py        # Format selection UI
-└── utils/
-    ├── downloader.py    # Async yt-dlp wrapper
-    ├── rate_limit.py    # Per-user rate limiting
-    └── cleanup.py       # Async file cleanup
-```
+---
 
 ## 🚀 Quick Start
 
@@ -36,73 +22,78 @@ bot/
 
 1. **Python 3.11+**
 2. **ffmpeg** (required for yt-dlp to merge streams)
-
-   ```bash
-   # Ubuntu/Debian
-   sudo apt update && sudo apt install ffmpeg -y
-
+   ```powershell
    # Windows (via Chocolatey)
    choco install ffmpeg
-
-   # macOS
-   brew install ffmpeg
    ```
-
-3. **Telegram Bot Token**
-   - Message [@BotFather](https://t.me/BotFather) on Telegram
-   - Create a new bot with `/newbot`
-   - Copy the API token
+3. **Telegram Bot Token** from [@BotFather](https://t.me/BotFather)
 
 ### Installation
 
-1. **Clone/Navigate to the project**
+```powershell
+# Navigate to project
+cd "d:\raaj\All_programs\Programs\Telegram bot"
 
-   ```bash
-   cd "d:\raaj\All_programs\Programs\Telegram bot"
-   ```
+# Install dependencies
+pip install -r requirements.txt
 
-2. **Install dependencies**
+# Configure environment
+cp .env.example .env
+# Edit .env and add your BOT_TOKEN
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+# Run the bot
+python -m bot.main
+```
 
-3. **Configure environment**
+---
 
-   ```bash
-   # Copy the example
-   cp .env.example .env
+## 📚 Documentation
 
-   # Edit .env and add your BOT_TOKEN
-   ```
+All detailed documentation is in the **[`docs/`](./docs)** folder:
 
-4. **Run the bot**
-   ```bash
-   python -m bot.main
-   ```
+### 🎯 **Start Here:**
 
-## 🚀 Deployment
+- **[DEPLOYMENT_GUIDE.md](./docs/DEPLOYMENT_GUIDE.md)** - Help choosing the right deployment option
 
-### Running Permanently
+### 🪟 **Windows Deployment:**
 
-The bot will stop when you close your terminal/editor. To run it permanently:
+- **[QUICK_START_WINDOWS.md](./docs/QUICK_START_WINDOWS.md)** - 5-minute Windows setup ⚡
+- **[WINDOWS_DEPLOYMENT.md](./docs/WINDOWS_DEPLOYMENT.md)** - Complete Windows Service guide
 
-#### Local (Keep Your PC Running):
+### ☁️ **Cloud Deployment:**
 
-- **Windows**: See **[WINDOWS_DEPLOYMENT.md](WINDOWS_DEPLOYMENT.md)** for running as a Windows Service
-- **Quick Start**: See **[QUICK_START_WINDOWS.md](QUICK_START_WINDOWS.md)** for 5-minute setup
+- **[FREE_CLOUD_PLATFORMS.md](./docs/FREE_CLOUD_PLATFORMS.md)** - Free hosting options (Railway, Fly.io, etc.)
+- **[DEPLOYMENT.md](./docs/DEPLOYMENT.md)** - Linux/VPS/systemd deployment
 
-#### Cloud (24/7, No PC Required):
+### 📖 **Main Documentation:**
 
-- **Free Options**: See **[FREE_CLOUD_PLATFORMS.md](FREE_CLOUD_PLATFORMS.md)** ⭐ Railway, Fly.io, Koyeb, Oracle Cloud & more
-- **Advanced/VPS**: See **[DEPLOYMENT.md](DEPLOYMENT.md)** for systemd, Railway, Render, and scaling
+- **[Full README](./docs/README.md)** - Complete project documentation
 
-Quick Windows setup:
+---
+
+## 🎮 Management Tools
+
+### Windows Service Manager
 
 ```powershell
-# Use the interactive manager script
 .\manage_bot.ps1
 ```
+
+Interactive menu for:
+
+- Start/Stop/Restart service
+- View logs
+- Check status
+
+### Simple Startup
+
+```powershell
+.\start_bot.bat
+```
+
+One-click bot start with logging
+
+---
 
 ## 🔧 Configuration
 
@@ -114,6 +105,8 @@ MAX_CONCURRENT_DOWNLOADS=3
 USER_COOLDOWN_SECONDS=10
 ```
 
+---
+
 ## 📖 Usage
 
 1. Start the bot: `/start`
@@ -121,70 +114,62 @@ USER_COOLDOWN_SECONDS=10
 3. Choose format: **Best Video** or **Audio Only**
 4. Wait for download and receive your file!
 
-## 🧠 How It Works
+---
 
-### Async Subprocess Execution
+## 🚀 Deployment Options
 
-Instead of blocking Python with sync `subprocess.run()`, we use:
+### **Option 1: Windows Service** (Local, Free)
 
-```python
-process = await asyncio.create_subprocess_exec(
-    "yt-dlp", "-f", "bestvideo+bestaudio", url,
-    stdout=asyncio.subprocess.PIPE
-)
-stdout, stderr = await process.communicate()
+Run bot permanently on your Windows PC:
+
+```powershell
+.\manage_bot.ps1
 ```
 
-This allows the event loop to handle other users while yt-dlp runs.
+**See:** [QUICK_START_WINDOWS.md](./docs/QUICK_START_WINDOWS.md)
 
-### Semaphore for Concurrency Control
+### **Option 2: Cloud Hosting** (24/7, Free/Paid)
 
-```python
-semaphore = asyncio.Semaphore(3)  # Max 3 simultaneous downloads
+Deploy to Railway, Fly.io, or other platforms
 
-async with semaphore:
-    # Download happens here
-    # If 3 downloads are active, this waits
-```
+**See:** [FREE_CLOUD_PLATFORMS.md](./docs/FREE_CLOUD_PLATFORMS.md)
 
-Prevents server overload and memory exhaustion.
+---
 
-### Rate Limiting
-
-```python
-rate_limiter = RateLimiter(cooldown_seconds=10)
-
-if not await rate_limiter.check_rate_limit(user_id):
-    await message.answer("⏳ Please wait...")
-    return
-```
-
-Protects against spam and abuse.
-
-## 🚨 Error Handling
-
-The bot handles:
-
-- ❌ Invalid URLs → Clear error message
-- 🔒 Private/deleted content → Detected by yt-dlp exit code
-- 🔞 Age-restricted videos → yt-dlp error parsing
-- 📦 File size limits → Checked before sending (50 MB default)
-- 💥 Unexpected errors → Logged + user notification
-
-## 📝 Logs
-
-Logs are printed to stdout:
+## 🏗️ Project Structure
 
 ```
-2026-01-30 11:00:00 - bot.handlers.callbacks - INFO - Download completed for user 12345
-2026-01-30 11:00:05 - bot.utils.cleanup - INFO - Deleted file: downloads/12345/video.mp4
+Telegram bot/
+├── bot/
+│   ├── main.py              # Entry point
+│   ├── config.py            # Configuration
+│   ├── handlers/            # Message & callback handlers
+│   ├── keyboards/           # Inline keyboards
+│   └── utils/               # Helper functions
+├── docs/                    # 📚 All documentation
+│   ├── DEPLOYMENT_GUIDE.md  # Choose your deployment
+│   ├── QUICK_START_WINDOWS.md
+│   ├── WINDOWS_DEPLOYMENT.md
+│   ├── FREE_CLOUD_PLATFORMS.md
+│   ├── DEPLOYMENT.md
+│   └── README.md            # Full documentation
+├── logs/                    # Bot logs
+├── downloads/               # Temporary downloads
+├── .env                     # Environment variables
+├── requirements.txt         # Python dependencies
+├── manage_bot.ps1          # Service manager
+└── start_bot.bat           # Simple startup script
 ```
+
+---
 
 ## ⚠️ Limitations
 
-- **Telegram File Size**: 50 MB for bots (2 GB for users)
+- **Telegram File Size**: 50 MB for bots
 - **Disk Space**: Downloads are temporary but require storage during processing
-- **yt-dlp Updates**: Some sites may break; keep yt-dlp updated (`pip install -U yt-dlp`)
+- **yt-dlp Updates**: Keep updated (`pip install -U yt-dlp`)
+
+---
 
 ## 🔐 Security
 
@@ -193,34 +178,27 @@ Logs are printed to stdout:
 - ✅ Input validation (URL pattern matching)
 - ✅ Rate limiting (prevents abuse)
 
-## 🛠️ Development
+**⚠️ Never commit `.env` file to version control!**
 
-### Adding New Platforms
-
-Edit `bot/handlers/downloader.py`:
-
-```python
-URL_PATTERNS = {
-    "youtube": re.compile(r'...'),
-    "tiktok": re.compile(r'(https?://)?.*tiktok\.com/.+'),  # New!
-}
-```
-
-yt-dlp supports 1000+ sites automatically.
-
-### Adjusting Concurrency
-
-In `.env`:
-
-```env
-MAX_CONCURRENT_DOWNLOADS=5  # Increase for powerful servers
-```
+---
 
 ## 📄 License
 
 Educational purposes only. Respect content creators and platform terms of service.
 
+---
+
 ## 🙏 Credits
 
 - [aiogram](https://github.com/aiogram/aiogram) - Modern Telegram Bot framework
 - [yt-dlp](https://github.com/yt-dlp/yt-dlp) - Universal media downloader
+
+---
+
+## 🆘 Need Help?
+
+1. Check the [DEPLOYMENT_GUIDE.md](./docs/DEPLOYMENT_GUIDE.md) for choosing options
+2. See platform-specific guides in the `docs/` folder
+3. Check logs: `Get-Content logs\bot.log -Tail 50 -Wait`
+
+**Happy coding!** 🚀
